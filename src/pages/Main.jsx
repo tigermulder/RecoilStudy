@@ -1,18 +1,20 @@
 import styled from "styled-components";
 import ProductCard from "./../component/ProductCard/ProductCard";
-import dummyData from "./../model/dummyData";
+import dummyData from "../mockupdata/dummyData";
+import { Suspense } from "react";
 
 function Main() {
+
   return (
-    <ListWrapper>
-      {dummyData.map((e) => {
-        return (
-          <li key={e.id}>
-            <ProductCard data={e} />
-          </li>
-        );
-      })}
-    </ListWrapper>
+    <Suspense>
+      <ListWrapper>
+        {dummyData.map((e) => {
+          return (
+            <ProductCard key={e.id} data={e} />
+          );
+        })}
+      </ListWrapper>
+    </Suspense>
   );
 }
 const ListWrapper = styled.ul`
